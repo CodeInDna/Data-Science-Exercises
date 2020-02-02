@@ -3,3 +3,6 @@
 __pycache__
 Cat_Dog_data
 flower_data
+checkpoint.pth
+Dataset
+classifier.pth
