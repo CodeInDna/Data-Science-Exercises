@@ -1,3 +1,4 @@
+from IPython.display import Image
 def display_gif(fn):
     return '<img src="{}">'.format(fn)
 
