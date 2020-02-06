@@ -6,3 +6,4 @@ flower_data
 checkpoint.pth
 Dataset
 classifier.pth
+lfw_home/
