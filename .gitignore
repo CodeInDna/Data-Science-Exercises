@@ -7,3 +7,4 @@ checkpoint.pth
 Dataset
 classifier.pth
 lfw_home/
+data_main
