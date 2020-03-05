@@ -60,7 +60,7 @@ def save_data(df, db_filename):
 	db_filename: filename you want to save data in
 	"""
 	engine = create_engine('sqlite:///'+db_filename)
-	df.to_sql(db_filename, engine, index=False)
+	df.to_sql('Messages', engine, index=False)
 
 def main():
 	"""main: Perform ETL"""
