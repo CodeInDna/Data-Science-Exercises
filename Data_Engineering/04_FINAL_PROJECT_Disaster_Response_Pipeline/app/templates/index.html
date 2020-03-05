@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Disaster Response</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='assets/DS_favicon.png')}}" >
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="{{url_for('static', filename='js/uikit.js')}}"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<header class="uk-background-primary uk-background-norepeat uk-background-cover uk-background-center-center uk-light" 
+    style="background-image: url({{url_for('static', filename='assets/background.jpg')}});">
+    <nav class="uk-navbar-container">
+      <div class="uk-container">
+        <div data-uk-navbar>
+          <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo uk-visible@m" href="/">Disaster Response</a>
+          </div>
+          <div class="uk-navbar-center uk-hidden@m">
+            <a class="uk-navbar-item uk-logo" href="/">Disaster Response</a>
+          </div>
+          <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@m">
+              <li class="uk-active"><a href="/">Home</a></li>
+              <li>
+                <div class="uk-navbar-item">
+                  <a class="uk-button uk-button-small uk-button-primary-outline" href="https://github.com/CodeInDna" target="_blank"><i class="fa fa-github" aria-hidden="true"></i>
+                    GitHub
+                  </a>
+                </div>
+              </li>
+            </ul>
+            <a class="uk-navbar-toggle uk-hidden@m" href="https://github.com/CodeInDna" data-uk-toggle target="_blank">Github</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="uk-section uk-position-relative uk-position-z-index" data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true">
+        <div class="uk-container">
+            <h1 class="uk-text-center uk-margin-remove-top">How can we help you?</h1>
+            <div class="hero-search uk-margin-medium-top">
+                <form id="myForm" class="uk-search uk-search-default uk-width-1-1" name="search-hero" method="get" action="/go">
+                    <div style="display:flex">
+                    <span data-uk-search-icon="ratio: 1.2"></span>
+                    <input name="query" id="search-hero" class="uk-search-input uk-form-large uk-border-rounded" type="search"
+                        placeholder="Enter a message to classify" autocomplete="off" data-minchars="1" data-maxitems="30" required>
+                    <div class="box-3" onclick="document.getElementById('myForm').submit();">
+                      <div class="btn btn-three">
+                        <span>CLASSIFY </span>
+                      </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="uk-section uk-section-muted">
+  <div class="uk-container">
+    {% block content %}
+    <div class="uk-grid-small" data-uk-grid>
+      <div class="uk-width-expand">
+        <h1 class="uk-article-title uk-margin-remove" style="padding-bottom: 10px;
+">Overview of Training Dataset</h1>
+      </div>
+    </div>
+    {% endblock %}
+
+    {% for id in ids %}
+        <div id="{{ id }}"></div>
+    {% endfor %}
+    </div>   
+  </div>
+</div>
+
+
+<footer class="uk-section uk-text-center uk-text-muted">
+    <div class="uk-container uk-container-small">
+        <div>
+            <ul class="uk-subnav uk-flex-center">
+                <li><a href="/">Home</a></li>
+                <li><a href="https://github.com/CodeInDna" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="uk-margin-medium uk-text-small uk-link-muted">Made with <span style="color: #e25555; font-size: 20px;">&#9829;</span> by Yashika Karelia</div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    const graphs = {{graphJSON | safe}}
+    const ids = {{ids | safe}}
+    for(let i in graphs){
+    	Plotly.plot(ids[i], graphs[i].data, graphs[i].layout)
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block title %}Results{% endblock %}
+
+{% block message %}
+	<hr />
+	<h4 class="text-center">MESSAGE</h4>
+	<p class='text-center'><i>{{ query }}</i></p>
+{% endblock %}
+
+{% block content %}
+<ul class="uk-breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><span>Classification Result</span></li>
+    </ul>
+    <div class="uk-grid-small" data-uk-grid>
+      <div class="uk-width-auto uk-text-primary">
+        <span class="uk-margin-xsmall-top" data-uk-icon="icon: cog; ratio: 2.6"></span>
+      </div>
+      <div class="uk-width-expand">
+        <h1 class="uk-article-title uk-margin-remove">Classification Result</h1>
+        <p class="uk-text-lead uk-text-muted uk-margin-small-top" style="padding-bottom:15px;">MESSAGE: <em>{{ query }}</em></p>
+      </div>
+    </div>
+
+ 	{% for category, prediction in results.items() %}
+        {% if prediction == 1 %}
+		    <div class="uk-margin-medium-top">
+		      <div class="uk-card uk-card-category uk-card-default-purp uk-card-hover uk-card-body uk-inline uk-border-rounded uk-width-1-1">
+		        <a class="uk-position-cover" href="article.html"></a>
+		        <h3 class="uk-card-title uk-margin-remove uk-text-primary-white">{{ category.replace('_', " ").title() }}</h3>
+		      </div>
+		  	</div>
+		{% else %}
+			<div class="uk-margin-medium-top">
+		      <div class="uk-card uk-card-category uk-card-default uk-card-hover uk-card-body uk-inline uk-border-rounded uk-width-1-1">
+		        <a class="uk-position-cover" href="article.html"></a>
+		        <h3 class="uk-card-title uk-margin-remove uk-text-primary">{{ category.replace('_', " ").title() }}</h3>
+		      </div>
+		  	</div>
+		{% endif %}
+	{% endfor %}
+
+{% endblock %}
