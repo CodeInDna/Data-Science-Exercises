@@ -9,3 +9,5 @@ classifier.pth
 lfw_home/
 data_main
 worldbank.db
+.gitignore
+classifier.pkl
