@@ -11,3 +11,5 @@ data_main
 worldbank.db
 .gitignore
 classifier.pkl
+*.p
+reviews_clean.csv
