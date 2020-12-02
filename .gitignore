@@ -13,3 +13,7 @@ worldbank.db
 classifier.pkl
 *.p
 reviews_clean.csv
+data/
+datasets/
+assets/
+*.log
