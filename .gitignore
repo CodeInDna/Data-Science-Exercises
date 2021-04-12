@@ -9,7 +9,7 @@ classifier.pth
 lfw_home/
 data_main
 worldbank.db
-.gitignore
+
 classifier.pkl
 *.p
 reviews_clean.csv
@@ -17,3 +17,5 @@ data/
 datasets/
 assets/
 *.log
+*.csv
+*.jpg
